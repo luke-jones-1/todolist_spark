@@ -1,14 +1,14 @@
-### Acebook
+### Todo List
 
 #### Running the application
 
  - Make sure postgres is running
- - `createdb acebook`
+ - `createdb todolist-spark`
  - `brew install maven`
  - `mvn install`
  - Open project in intellij 
  - Click the run button
- - Hit http://localhost:4567/posts
+ - Hit http://localhost:4567/todos
  
  #### Skills checklist
    

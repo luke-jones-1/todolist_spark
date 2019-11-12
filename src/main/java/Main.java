@@ -17,10 +17,10 @@ public class Main {
     public static void main(String[] args) {
         BasicConfigurator.configure();
 
-        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5432/acebook", null, null).load();
+        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5432/todolist-spark", null, null).load();
         flyway.migrate();
 
-        Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/" + "acebook", null, null, new PostgresQuirks() {
+        Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/" + "todolist-spark", null, null, new PostgresQuirks() {
             {
                 // make sure we use default UUID converter.
                 converters.put(UUID.class, new UUIDConverter());
@@ -33,15 +33,15 @@ public class Main {
         get("/", (req, res) -> "Hello World");
 
 
-        get("/posts", (req, res) -> {
-            if(model.getAllPosts().size() == 0) {
-                UUID id = model.createPost("hello", "world");
+        get("/todos", (req, res) -> {
+            if(model.getAllItems().size() == 0) {
+                UUID id = model.createItem("hello", "world");
             }
 
-            HashMap posts = new HashMap();
-            posts.put("posts", model.getAllPosts());
-
-            return new ModelAndView(posts, "templates/posts.vtl");
+            HashMap todos = new HashMap();
+            todos.put("todos", model.getAllItems());
+            System.out.println(todos);
+            return new ModelAndView(todos, "templates/todos.vtl");
         }, new VelocityTemplateEngine());
     }
 }

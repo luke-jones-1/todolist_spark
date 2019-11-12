@@ -1,5 +1,5 @@
-create table posts(
- post_id VARCHAR,
+create table todos(
+ item_id VARCHAR,
  title VARCHAR,
- content VARCHAR
+ item VARCHAR
 )

@@ -6,9 +6,9 @@ import java.util.UUID;
 
 import lombok.Data;
 @Data
-public class Post {
-    private UUID post_id;
+public class TodoItem {
+    private UUID item_id;
     private String title;
-    private String content;
+    private String item;
 
 }

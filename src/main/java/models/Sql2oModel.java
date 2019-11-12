@@ -16,35 +16,35 @@ public class Sql2oModel implements Model {
     }
 
     @Override
-    public UUID createPost(String title, String content) {
+    public UUID createItem(String title, String content) {
         try (Connection conn = sql2o.beginTransaction()) {
-            UUID postUuid = UUID.randomUUID();
-            conn.createQuery("insert into posts(post_id, title, content) VALUES (:post_id, :title, :content)")
-                    .addParameter("post_id", postUuid)
+            UUID itemUuid = UUID.randomUUID();
+            conn.createQuery("insert into todos(item_id, title, item) VALUES (:item_id, :title, :content)")
+                    .addParameter("item_id", itemUuid)
                     .addParameter("title", title)
                     .addParameter("content", content)
                     .executeUpdate();
             conn.commit();
-            return postUuid;
+            return itemUuid;
         }
     }
 
     @Override
-    public List<Post> getAllPosts() {
+    public List<TodoItem> getAllItems() {
         try (Connection conn = sql2o.open()) {
-            List<Post> posts = conn.createQuery("select * from posts;")
-                    .executeAndFetch(Post.class);
+            List<TodoItem> posts = conn.createQuery("select * from todos;")
+                    .executeAndFetch(TodoItem.class);
             return posts;
         }
     }
 
 
     @Override
-    public boolean existPost(UUID post) {
+    public boolean existItem(UUID item) {
         try (Connection conn = sql2o.open()) {
-            List<Post> posts = conn.createQuery("select * from posts where post_uuid=:post")
-                    .addParameter("post", post)
-                    .executeAndFetch(Post.class);
+            List<TodoItem> posts = conn.createQuery("select * from todos where item_uuid=:item")
+                    .addParameter("item", item)
+                    .executeAndFetch(TodoItem.class);
             return posts.size() > 0;
         }
     }

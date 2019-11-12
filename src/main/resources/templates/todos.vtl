@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Acebook!</title>
+    <title>To do list!</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
   </head>
   <body>
-    <h1>Welcome to acebook</h1>
+    <h1>To Do List</h1>
     <ul>
-    #foreach( $post in $posts )
-       <li> $post.title $post.content </li>
+    #foreach( $t in $todos )
+         <li> $t.title $t.item </li>
 
-
-    #end
+      #end
     </ul>
 
   </body>
