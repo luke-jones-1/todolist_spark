@@ -4,6 +4,7 @@
 
  - Make sure postgres is running
  - `createdb todolist-spark`
+ - `createdb todolist-spark-test`
  - `brew install maven`
  - `mvn install`
  - Open project in intellij 

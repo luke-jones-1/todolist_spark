@@ -32,21 +32,11 @@ public class Sql2oModel implements Model {
     @Override
     public List<TodoItem> getAllItems() {
         try (Connection conn = sql2o.open()) {
-            List<TodoItem> posts = conn.createQuery("select * from todos;")
+            List<TodoItem> items = conn.createQuery("select * from todos")
                     .executeAndFetch(TodoItem.class);
-            return posts;
+            return items;
         }
     }
 
-
-    @Override
-    public boolean existItem(UUID item) {
-        try (Connection conn = sql2o.open()) {
-            List<TodoItem> posts = conn.createQuery("select * from todos where item_uuid=:item")
-                    .addParameter("item", item)
-                    .executeAndFetch(TodoItem.class);
-            return posts.size() > 0;
-        }
-    }
 
 }

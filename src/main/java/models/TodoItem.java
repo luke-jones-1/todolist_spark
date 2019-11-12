@@ -11,4 +11,10 @@ public class TodoItem {
     private String title;
     private String item;
 
+    public TodoItem(UUID item_id, String title, String item) {
+        this.item_id = item_id;
+        this.title = title;
+        this.item = item;
+    }
+
 }
