@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Sql2oModelTest {
 
 
-    Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/" + "todolist-spark-test",
+    Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/" + "todolist_spark_test",
             null, null, new PostgresQuirks() {
         {
             // make sure we use default UUID converter.
@@ -33,7 +33,7 @@ class Sql2oModelTest {
     @BeforeAll
     static void setUpClass() {
         BasicConfigurator.configure();
-        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5432/todolist-spark-test", null, null).load();
+        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5432/todolist_spark_test", null, null).load();
         flyway.migrate();
 
     }

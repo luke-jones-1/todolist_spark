@@ -17,10 +17,10 @@ public class Main {
     public static void main(String[] args) {
         BasicConfigurator.configure();
 
-        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5432/todolist-spark", null, null).load();
+        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5432/todolist_spark", null, null).load();
         flyway.migrate();
 
-        Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/" + "todolist-spark", null, null, new PostgresQuirks() {
+        Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/" + "todolist_spark", null, null, new PostgresQuirks() {
             {
                 // make sure we use default UUID converter.
                 converters.put(UUID.class, new UUIDConverter());
@@ -30,9 +30,9 @@ public class Main {
         Model model = new Sql2oModel(sql2o);
 
 
-        get("/hello", (req, res) ->
-                "Hello World"
-        );
+        get("/", (req, res) -> {
+            return new ModelAndView(new HashMap(), "template/index.vtl");
+        });
 
 
         get("/todos", (req, res) -> {
