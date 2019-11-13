@@ -34,14 +34,18 @@ public class Main {
 
 
         get("/todos", (req, res) -> {
+
             if(model.getAllItems().size() == 0) {
                 UUID id = model.createItem("hello", "world");
             }
 
             HashMap todos = new HashMap();
             todos.put("todos", model.getAllItems());
-            System.out.println(todos);
+
             return new ModelAndView(todos, "templates/todos.vtl");
         }, new VelocityTemplateEngine());
+
+
+        //TODO Add an endpoint which receives a todo item from a form and store this in the database
     }
 }

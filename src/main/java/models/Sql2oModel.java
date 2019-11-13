@@ -19,12 +19,7 @@ public class Sql2oModel implements Model {
     public UUID createItem(String title, String content) {
         try (Connection conn = sql2o.beginTransaction()) {
             UUID itemUuid = UUID.randomUUID();
-            conn.createQuery("insert into todos(item_id, title, item) VALUES (:item_id, :title, :content)")
-                    .addParameter("item_id", itemUuid)
-                    .addParameter("title", title)
-                    .addParameter("content", content)
-                    .executeUpdate();
-            conn.commit();
+            //TODO Add an item to the database
             return itemUuid;
         }
     }

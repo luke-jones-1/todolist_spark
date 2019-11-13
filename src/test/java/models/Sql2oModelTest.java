@@ -43,7 +43,6 @@ class Sql2oModelTest {
         conn.createQuery("insert into todos(item_id, title, item) VALUES (:item_id, 'Things', 'Buy stamps')")
                 .addParameter("item_id", id)
                 .executeUpdate();
-        System.out.println(id);
         conn.commit();
     }
 
@@ -57,6 +56,7 @@ class Sql2oModelTest {
 
     @Test
     void createItem() {
+        //TODO add a test for creating a new item in the database
 
     }
 
