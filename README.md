@@ -2,14 +2,20 @@
 
 #### Running the application
 
- - Make sure postgres is running
+ - Make sure postgres is running (type psql and this should enter a terminal)
  - `createdb todolist-spark`
- - `createdb todolist-spark-test`
+
  - `brew install maven`
  - `mvn install`
  - Open project in intellij 
- - Click the run button
+ - Click the run button in the file src/main/java/Main
  - Hit http://localhost:4567/todos
+ 
+ #### Running the tests
+  - Make sure postgres is running
+  - `createdb todolist-spark-test` (type psql and this should enter a terminal)
+  - Open project in intellij
+  
  
  #### Skills checklist
    

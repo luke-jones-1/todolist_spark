@@ -30,7 +30,9 @@ public class Main {
         Model model = new Sql2oModel(sql2o);
 
 
-        get("/", (req, res) -> "Hello World");
+        get("/hello", (req, res) ->
+                "Hello World"
+        );
 
 
         get("/todos", (req, res) -> {
