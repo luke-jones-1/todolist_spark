@@ -31,8 +31,9 @@ public class Main {
 
 
         get("/", (req, res) -> {
-            return new ModelAndView(new HashMap(), "template/index.vtl");
-        });
+            HashMap todo = new HashMap();
+            return new ModelAndView(todo, "templates/index.vtl");
+        }, new VelocityTemplateEngine());
 
 
         get("/todos", (req, res) -> {
