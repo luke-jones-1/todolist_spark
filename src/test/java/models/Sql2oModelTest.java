@@ -56,7 +56,11 @@ class Sql2oModelTest {
 
     @Test
     void createItem() {
-        //TODO add a test for creating a new item in the database
+        Model model = new Sql2oModel(sql2o);
+
+        model.createItem("TestTitle", "TestContent");
+
+        assertEquals(2, model.getAllItems().size());
 
     }
 

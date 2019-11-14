@@ -10,7 +10,7 @@ import spark.ModelAndView;
 import java.util.HashMap;
 import java.util.UUID;
 
-import static spark.Spark.get;
+import static spark.Spark.*;
 
 public class Main {
 
@@ -48,6 +48,21 @@ public class Main {
             return new ModelAndView(todos, "templates/todos.vtl");
         }, new VelocityTemplateEngine());
 
+        get("/new_todo", (req, res) -> {
+            HashMap todo = new HashMap();
+            return new ModelAndView(todo, "templates/new_todo.vtl");
+        }, new VelocityTemplateEngine());
+
+        post( "/todos", (req, res) -> {
+            String title = req.queryParams("todo_title");
+            String content = req.queryParams("todo_content");
+
+            UUID id = model.createItem(title, content);
+
+            res.redirect("/todos");
+
+            return null;
+        });
 
         //TODO Add an endpoint which receives a todo item from a form and store this in the database
     }
